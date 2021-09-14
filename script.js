@@ -113,7 +113,7 @@ pointBtn.addEventListener("click", function showPionts() {
 let restartBtn = document
   .querySelector(".restart-btn")
   .addEventListener("click", function restart() {
-    let playersPoints = JSON.parse(localStorage.getItem("playersPoints"));
+    let playersPoints = JSON.parse(localStorage.getItem("playersPoints")) || 0;
     alert("You Had " + playersPoints + " Pts");
     alert("Points Are Reset");
     window.localStorage.clear();
