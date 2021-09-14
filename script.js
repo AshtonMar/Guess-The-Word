@@ -21,7 +21,6 @@ function getRandomWord() {
     "opinion",
     "sympathetic",
     "percent",
-    "well",
     "fashion",
     "discover",
     "version",
