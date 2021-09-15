@@ -58,13 +58,21 @@ function getRandomWord() {
   placeOfWord.innerHTML += finalWord;
   document.querySelector(".answer-btn").addEventListener("click", () => {
     let enteredGuess = document.querySelector(".entered-guess").value;
+    enteredGuess = enteredGuess.trim();
+    enteredGuess = enteredGuess.toLowerCase();
+    console.log(enteredGuess);
 
     if (enteredGuess == randomWordChosen) {
       let playersPoints =
         JSON.parse(localStorage.getItem("playersPoints")) || 0;
 
       playersPoints = playersPoints + 1;
-      alert(playersPoints + " Pts");
+      alert(
+        "Well Done You Have " +
+          playersPoints +
+          " Pts And The Word Was " +
+          randomWordChosen
+      );
 
       localStorage.setItem("playersPoints", JSON.stringify(playersPoints));
       location.reload();
@@ -73,7 +81,12 @@ function getRandomWord() {
         JSON.parse(localStorage.getItem("playersPoints")) || 0;
       playersPoints = playersPoints - 1;
 
-      alert(playersPoints + " Pts");
+      alert(
+        "Sorry You Lost A Point Now You Have " +
+          playersPoints +
+          " Pts And The Word Was " +
+          randomWordChosen
+      );
       localStorage.setItem("playersPoints", JSON.stringify(playersPoints));
       location.reload();
     } else {
@@ -81,7 +94,12 @@ function getRandomWord() {
         JSON.parse(localStorage.getItem("playersPoints")) || 0;
 
       playersPoints = playersPoints - 1;
-      alert(playersPoints + " Pts");
+      alert(
+        "Sorry You Lost A Point Now You Have " +
+          playersPoints +
+          " Pts And The Word Was " +
+          randomWordChosen
+      );
       localStorage.setItem("playersPoints", JSON.stringify(playersPoints));
       location.reload();
     }
