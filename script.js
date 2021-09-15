@@ -118,3 +118,13 @@ let restartBtn = document
     alert("Points Are Reset");
     window.localStorage.clear();
   });
+
+let exitBtn = document
+  .querySelector(".exit-btn")
+  .addEventListener("click", function restart() {
+    let playersPoints = JSON.parse(localStorage.getItem("playersPoints")) || 0;
+    alert("You Had " + playersPoints + " Pts");
+    alert("Points Are Reset");
+    window.localStorage.clear();
+    window.location.href = "https://gamergram.netlify.app/homepage.html";
+  });
