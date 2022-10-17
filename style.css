@@ -35,6 +35,10 @@ button {
 	padding: 5px;
 }
 
+button:hover {
+	background-color: #3a3a3a;
+}
+
 input {
 	text-align: center;
 	font-size: 30px;
@@ -81,10 +85,6 @@ input:focus {
 	content: '__________';
 	color: #aa1111;
 	display: block;
-}
-
-.word:hover {
-	transform: scale(1, 1);
 }
 
 .player-area {
