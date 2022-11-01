@@ -1,0 +1,308 @@
+{
+	"words": {
+		"A": {
+			"words": [
+				{
+					"value": "attraction",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"B": {
+			"words": [
+				{
+					"value": "background",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"C": {
+			"words": [
+				{
+					"value": "conscience",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "chest",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "conception",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "cunning",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "cage",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"D": {
+			"words": [
+				{
+					"value": "dentist",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"E": {
+			"words": [
+				{
+					"value": "execute",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"F": {
+			"words": [
+				{
+					"value": "forecast",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "flourish",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"G": {
+			"words": [
+				{
+					"value": "grip",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "game",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"H": {
+			"words": [
+				{
+					"value": "happen",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "hypothesize",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"I": {
+			"words": [
+				{
+					"value": "install",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "implication",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"J": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"K": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"L": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"M": {
+			"words": [
+				{
+					"value": "meat",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"N": {
+			"words": [
+				{
+					"value": "name",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"O": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"P": {
+			"words": [
+				{
+					"value": "protest",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "payment",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "public",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"Q": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"R": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"S": {
+			"words": [
+				{
+					"value": "season",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "stamp",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "soul",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "spine",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"T": {
+			"words": [
+				{
+					"value": "tail",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"U": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"V": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"W": {
+			"words": [
+				{
+					"value": "whisper",
+					"description": "",
+					"hint": ""
+				},
+				{
+					"value": "wife",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"X": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"Y": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		},
+		"Z": {
+			"words": [
+				{
+					"value": "",
+					"description": "",
+					"hint": ""
+				}
+			]
+		}
+	}
+}
