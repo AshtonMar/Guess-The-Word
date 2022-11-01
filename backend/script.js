@@ -2,24 +2,65 @@
 let players_points = localStorage.getItem("players_points") || 0;
 const place_of_word = document.querySelector(".word");
 const answer_btn = document.querySelector(".answer-btn");
+// function alert_modal(heading: string, message: string, btn_text: string): void {
+// 	let alert_visible = false;
+// 	const body = document.getElementsByTagName("body")[0];
+// 	const alert_modal = `	
+// 		<section id="alert-modal">
+// 			<h1 class="alert-modal-content heading">${heading}</h1>
+// 			<p class="alert-modal-content message">${message}</p>
+// 			<button id="alert-modal-btn">${btn_text}</button>
+// 		</section>`
+// 	body.innerHTML = alert_modal;
+// 	const alert_modal_styling = document.getElementById("alert-modal") as HTMLElement | null;
+// 	if (!alert_modal_styling)
+// 		return;
+// 	let alert_modal_styles: any = {
+// 		"display": "flex",
+// 		"position": "absolute",
+// 		"flex-direction": "column",
+// 		"justify-content": "space-between",
+// 		"background-color": "white",
+// 		"border-radius": "5px",
+// 		"height": "30%",
+// 		"width": "30%",
+// 		"padding": "25px",
+// 		"opacity": "1"
+// 	}
+// 	for (const key in alert_modal_styles) {
+// 		if (!Object.prototype.hasOwnProperty.call(alert_modal_styles, key))
+// 			return;
+// 		alert_modal_styling.setAttribute('style', `${key}: ${alert_modal_styles[key]}`);
+// 	}
+// 	const alert_modal_btn: Element | null = document.getElementById("alert_modal_btn");
+// 	if (!alert_visible)
+// 		alert_visible = true;
+// 	alert_modal_btn?.addEventListener('click', () => {
+// 		if (alert_visible)
+// 			alert_modal_styling.style.opacity = "1";
+// 		alert_visible = false;
+// 	})
+// }
 function getGameControls() {
     const point_btn = document.getElementById("point-btn");
     const restart_btn = document.getElementById("restart-btn");
     const exitBtn = document.getElementById("exit-btn");
     if (!point_btn || !restart_btn || !exitBtn)
         return;
-    point_btn.addEventListener("click", function showPionts() {
-        alert(players_points + " Pts");
+    point_btn.addEventListener("click", function showPoints() {
+        // alert_modal("Points", `${players_points} Pts`, "Ok");
+        alert(`${players_points} Pts`);
     });
     restart_btn.addEventListener("click", function restart() {
-        alert("You Had " + players_points + " Pts");
-        alert("Points Are Reset");
+        // alert_modal("You have restarted", `You Had ${players_points} Pts`, "Ok");
+        alert(`You Had ${players_points} Pts. They have been restarted.`);
         window.localStorage.clear();
     });
-    exitBtn.addEventListener("click", function restart() {
-        alert("You Had " + players_points + " Pts");
-        alert("Points Are Reset");
+    exitBtn.addEventListener("click", function exit() {
+        // alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok");
+        alert(`You Had ${players_points} Pts. They have been reset.`);
         window.localStorage.clear();
+        window.close();
     });
 }
 function getRandomWord() {
@@ -45,6 +86,7 @@ function getRandomWord() {
             localStorage.setItem("players_points", players_points);
             location.reload();
         }
+        // alert_modal("The Answer", `${start_msg + players_points} Pts And The Word Was ${final_word}`, "Ok");
         alert(`${start_msg + players_points} Pts And The Word Was ${final_word}`);
     });
 }
