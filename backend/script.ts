@@ -1,6 +1,6 @@
 let players_points: any = localStorage.getItem("players_points") || 0;
 const place_of_word: Element | null = document.querySelector(".word");
-const answer_btn: Element | null = document.querySelector(".answer-btn")
+const answer_btn: Element | null = document.querySelector(".answer-btn");
 
 // function alert_modal(heading: string, message: string, btn_text: string): void {
 // 	let alert_visible = false;
