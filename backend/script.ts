@@ -2,54 +2,50 @@ let players_points: any = localStorage.getItem("players_points") || 0;
 const place_of_word: Element | null = document.querySelector(".word");
 const answer_btn: Element | null = document.querySelector(".answer-btn");
 
-// function alert_modal(heading: string, message: string, btn_text: string): void {
-// 	let alert_visible = false;
-// 	const body = document.getElementsByTagName("body")[0];
+function alert_modal(heading: string = "", message: string = "", btn_text: string = "Ok"): void {
+	const body = document.getElementsByTagName("body")[0];
 
-// 	const alert_modal = `	
-// 		<section id="alert-modal">
-// 			<h1 class="alert-modal-content heading">${heading}</h1>
-// 			<p class="alert-modal-content message">${message}</p>
-// 			<button id="alert-modal-btn">${btn_text}</button>
-// 		</section>`
+	const alert_modal_struc = `	
+		<section id="alert-modal">
+		<h1 class="alert-modal-content amc-heading">${heading}</h1>
+		<p class="alert-modal-content amc-message">${message}</p>
+		<but>
+		</section>`
 
-// 	body.innerHTML = alert_modal;
-// 	const alert_modal_styling = document.getElementById("alert-modal") as HTMLElement | null;
+	body.innerHTML = alert_modal_struc;
+	const alert_modal_styling = document.getElementById("alert-modal") as HTMLElement | null;
 
-// 	if (!alert_modal_styling)
-// 		return;
+	if (!alert_modal_styling)
+		return;
 
-// 	let alert_modal_styles: any = {
-// 		"display": "flex",
-// 		"position": "absolute",
-// 		"flex-direction": "column",
-// 		"justify-content": "space-between",
-// 		"background-color": "white",
-// 		"border-radius": "5px",
-// 		"height": "30%",
-// 		"width": "30%",
-// 		"padding": "25px",
-// 		"opacity": "1"
-// 	}
+	let alert_modal_styles: any = {
+		display: "flex",
+		position: "absolute",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "space-evenly",
+		backgroundColor: "white",
+		borderRadius: "5px",
+		height: "30%",
+		width: "30%",
+		padding: "25px",
+		opacity: "1"
+	}
 
-// 	for (const key in alert_modal_styles) {
-// 		if (!Object.prototype.hasOwnProperty.call(alert_modal_styles, key))
-// 			return;
-// 		alert_modal_styling.setAttribute('style', `${key}: ${alert_modal_styles[key]}`);
-// 	}
+	let styles = alert_modal_styling.style
+	for (const value in styles) {
+		for (const key in alert_modal_styles) {
+			if (value === key) {
+				styles[value] = alert_modal_styles[key]
+			}
+		}
+	}
 
-// 	const alert_modal_btn: Element | null = document.getElementById("alert_modal_btn");
+	setTimeout(() => {
+		window.location.reload();
+	}, 2500);
+}
 
-// 	if (!alert_visible)
-// 		alert_visible = true;
-
-// 	alert_modal_btn?.addEventListener('click', () => {
-// 		if (alert_visible)
-// 			alert_modal_styling.style.opacity = "1";
-// 		alert_visible = false;
-// 	})
-
-// }
 
 function getGameControls() {
 	const point_btn: Element | null = document.getElementById("point-btn");
@@ -60,21 +56,17 @@ function getGameControls() {
 		return;
 
 	point_btn.addEventListener("click", function showPoints() {
-		// alert_modal("Points", `${players_points} Pts`, "Ok");
-		alert(`${players_points} Pts`);
+		alert_modal("Points", `You Have ${players_points} Pts`, "Ok");
 	});
 
 	restart_btn.addEventListener("click", function restart() {
-		// alert_modal("You have restarted", `You Had ${players_points} Pts`, "Ok");
-		alert(`You Had ${players_points} Pts. They have been restarted.`);
+		alert_modal("You have restarted", `You Had ${players_points} Pts`, "Ok");
 		window.localStorage.clear();
 	});
 
 	exitBtn.addEventListener("click", function exit() {
-		// alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok");
-		alert(`You Had ${players_points} Pts. They have been reset.`);
+		alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok");
 		window.localStorage.clear();
-		window.close();
 	});
 }
 
@@ -97,17 +89,14 @@ function getRandomWord() {
 			players_points = JSON.parse(players_points) + 1;
 
 			localStorage.setItem("players_points", players_points);
-			location.reload();
 		} else {
 			start_msg = "Sorry you lost a point you now have "
 			players_points = JSON.parse(players_points) - 1;
 
 			localStorage.setItem("players_points", players_points);
-			location.reload();
 		}
 
-		// alert_modal("The Answer", `${start_msg + players_points} Pts And The Word Was ${final_word}`, "Ok");
-		alert(`${start_msg + players_points} Pts And The Word Was ${final_word}`);
+		alert_modal("The Answer", `${start_msg + players_points} Pts and the word was ${answer}`, "Ok");
 	});
 }
 

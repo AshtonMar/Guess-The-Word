@@ -24,18 +24,32 @@ body {
 	color: white;
 }
 
+h1 {
+	color: #3a3a3a;
+	font-size: 45px;
+}
+
+p {
+	color: black;
+	font-size: 20px;
+	margin-block: 30px;
+}
+
 button {
 	border: none;
-	background-color: #3a3a3a;
+	background-color: grey;
 	border-radius: 5px;
 	color: white;
 	height: 50px;
 	width: 400px;
 	margin-bottom: 20px;
 	padding: 5px;
+	transition: all 0.5s;
+	transition-timing-function: ease-in-out;
 }
 
 button:hover {
+	cursor: pointer;
 	background-color: #3a3a3a;
 }
 
