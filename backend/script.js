@@ -214,6 +214,7 @@ function getRandomWord(word_api_value) {
     if (!place_of_word)
         return;
     place_of_word.innerHTML += final_word[1];
+    console.log(final_word[0]);
     answer_btn === null || answer_btn === void 0 ? void 0 : answer_btn.addEventListener("click", () => {
         const entered_guess = document.querySelector(".entered-guess");
         let guess = entered_guess === null || entered_guess === void 0 ? void 0 : entered_guess.value.trim().toLowerCase();

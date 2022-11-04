@@ -227,7 +227,9 @@ function getRandomWord(word_api_value: string[]) {
 
 	if (!place_of_word)
 		return;
+
 	place_of_word.innerHTML += final_word[1];
+	console.log(final_word[0]);
 
 	answer_btn?.addEventListener("click", () => {
 		const entered_guess: any = document.querySelector(".entered-guess");
@@ -279,7 +281,6 @@ function shuffleWord(random_word: string[]) {
 	}
 	return random_word;
 }
-
 
 getGameControls();
 getRandomWord(word_api["words"]);
