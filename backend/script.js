@@ -1,64 +1,6 @@
 "use strict";
-let players_points = localStorage.getItem("players_points") || 0;
-const place_of_word = document.querySelector(".word");
-const answer_btn = document.querySelector(".answer-btn");
-function alert_modal(heading = "", message = "", btn_text = "Ok") {
-    const body = document.getElementsByTagName("body")[0];
-    const alert_modal_struc = `	
-		<section id="alert-modal">
-		<h1 class="alert-modal-content amc-heading">${heading}</h1>
-		<p class="alert-modal-content amc-message">${message}</p>
-		<but>
-		</section>`;
-    body.innerHTML = alert_modal_struc;
-    const alert_modal_styling = document.getElementById("alert-modal");
-    if (!alert_modal_styling)
-        return;
-    let alert_modal_styles = {
-        display: "flex",
-        position: "absolute",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-evenly",
-        backgroundColor: "white",
-        borderRadius: "5px",
-        height: "30%",
-        width: "30%",
-        padding: "25px",
-        opacity: "1"
-    };
-    let styles = alert_modal_styling.style;
-    for (const value in styles) {
-        for (const key in alert_modal_styles) {
-            if (value === key) {
-                styles[value] = alert_modal_styles[key];
-            }
-        }
-    }
-    setTimeout(() => {
-        window.location.reload();
-    }, 2500);
-}
-function getGameControls() {
-    const point_btn = document.getElementById("point-btn");
-    const restart_btn = document.getElementById("restart-btn");
-    const exitBtn = document.getElementById("exit-btn");
-    if (!point_btn || !restart_btn || !exitBtn)
-        return;
-    point_btn.addEventListener("click", function showPoints() {
-        alert_modal("Points", `You Have ${players_points} Pts`, "Ok");
-    });
-    restart_btn.addEventListener("click", function restart() {
-        alert_modal("You have restarted", `You Had ${players_points} Pts`, "Ok");
-        window.localStorage.clear();
-    });
-    exitBtn.addEventListener("click", function exit() {
-        alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok");
-        window.localStorage.clear();
-    });
-}
-function getRandomWord() {
-    let words = [
+const word_api = {
+    "words": [
         "lighter",
         "deliver",
         "outline",
@@ -204,7 +146,70 @@ function getRandomWord() {
         "survival",
         "quality",
         "dare"
-    ];
+    ]
+};
+let players_points = localStorage.getItem("players_points") || 0;
+const place_of_word = document.querySelector(".word");
+const answer_btn = document.querySelector(".answer-btn");
+function alert_modal(heading = "", message = "", btn_text = "Ok") {
+    const body = document.getElementsByTagName("body")[0];
+    const alert_modal_struc = `	
+		<section id="alert-modal">
+		<h1 class="alert-modal-content amc-heading">${heading}</h1>
+		<p class="alert-modal-content amc-message">${message}</p>
+		<but>
+		</section>`;
+    body.innerHTML = alert_modal_struc;
+    const alert_modal_styling = document.getElementById("alert-modal");
+    if (!alert_modal_styling)
+        return;
+    let alert_modal_styles = {
+        display: "flex",
+        position: "absolute",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        backgroundColor: "white",
+        borderRadius: "5px",
+        height: "30%",
+        width: "30%",
+        padding: "25px",
+        opacity: "1"
+    };
+    let styles = alert_modal_styling.style;
+    for (const value in styles) {
+        for (const key in alert_modal_styles) {
+            if (value === key) {
+                styles[value] = alert_modal_styles[key];
+            }
+        }
+    }
+    setTimeout(() => {
+        window.location.reload();
+    }, 2500);
+}
+function getGameControls() {
+    const point_btn = document.getElementById("point-btn");
+    const restart_btn = document.getElementById("restart-btn");
+    const exitBtn = document.getElementById("exit-btn");
+    if (!point_btn || !restart_btn || !exitBtn)
+        return;
+    point_btn.addEventListener("click", function showPoints() {
+        alert_modal("Points", `You Have ${players_points} Pts`, "Ok");
+    });
+    restart_btn.addEventListener("click", function restart() {
+        alert_modal("You have restarted", `You Had ${players_points} Pts`, "Ok");
+        window.localStorage.clear();
+    });
+    exitBtn.addEventListener("click", function exit() {
+        alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok");
+        window.localStorage.clear();
+    });
+}
+function getRandomWord(word_api_value) {
+    let words = [];
+    if (word_api_value)
+        words = word_api_value;
     let final_word = getWordToGuess(words);
     if (!place_of_word)
         return;
@@ -251,4 +256,4 @@ function shuffleWord(random_word) {
     return random_word;
 }
 getGameControls();
-getRandomWord();
+getRandomWord(word_api["words"]);
