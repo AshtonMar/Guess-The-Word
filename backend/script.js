@@ -157,10 +157,11 @@ function alert_modal(heading = "", message = "", btn_text = "Ok") {
 		<section id="alert-modal">
 		<h1 class="alert-modal-content amc-heading">${heading}</h1>
 		<p class="alert-modal-content amc-message">${message}</p>
-		<but>
+		<button id="${btn_text}-btn">${btn_text}</button>
 		</section>`;
     body.innerHTML = alert_modal_struc;
     const alert_modal_styling = document.getElementById("alert-modal");
+    const alert_modal_btn = document.getElementById(`${btn_text}-btn`);
     if (!alert_modal_styling)
         return;
     let alert_modal_styles = {
@@ -184,9 +185,9 @@ function alert_modal(heading = "", message = "", btn_text = "Ok") {
             }
         }
     }
-    setTimeout(() => {
+    alert_modal_btn === null || alert_modal_btn === void 0 ? void 0 : alert_modal_btn.addEventListener('click', () => {
         window.location.reload();
-    }, 2500);
+    });
 }
 function getGameControls() {
     const point_btn = document.getElementById("point-btn");
