@@ -152,7 +152,7 @@ let players_points: any = localStorage.getItem("players_points") || 0;
 const place_of_word: Element | null = document.querySelector(".word");
 const answer_btn: Element | null = document.querySelector(".answer-btn");
 
-function alert_modal(heading: string = "", message: string = "", btn_text: string = "Ok"): void {
+function alert_modal(heading: string = "", message: string = "", btn_text: string = "Ok", exit_status: boolean = false): void {
 	const body = document.getElementsByTagName("body")[0];
 
 	const alert_modal_struc = `	
@@ -164,16 +164,16 @@ function alert_modal(heading: string = "", message: string = "", btn_text: strin
 
 	body.innerHTML = alert_modal_struc;
 	const alert_modal_styling = document.getElementById("alert-modal") as HTMLElement | null;
-	const alert_modal_btn = document.getElementById(`${btn_text}-btn`);
+	const alert_modal_btn = document.getElementById(`${btn_text}-btn`) as HTMLElement | null;
 
-	if (!alert_modal_styling)
+	if (!alert_modal_styling || !alert_modal_btn)
 		return;
 
 	let alert_modal_styles: any = {
 		display: "flex",
 		position: "absolute",
 		flexDirection: "column",
-		alignItems: "center",
+		alignItems: "",
 		justifyContent: "space-evenly",
 		backgroundColor: "white",
 		borderRadius: "5px",
@@ -187,27 +187,30 @@ function alert_modal(heading: string = "", message: string = "", btn_text: strin
 	for (const value in styles) {
 		for (const key in alert_modal_styles) {
 			if (value === key) {
-				styles[value] = alert_modal_styles[key]
+				styles[value] = alert_modal_styles[key];
+				alert_modal_btn.style.alignSelf = "flex-end";
+				alert_modal_btn.style.width = "30%";
 			}
 		}
 	}
 
-	alert_modal_btn?.addEventListener('click', () => {
-		window.location.reload();
+	alert_modal_btn.addEventListener('click', () => {
+		if (exit_status) {
+			window.close();
+		}
+
+		if (!exit_status) {
+			window.location.reload();
+		}
 	})
 }
 
 function getGameControls() {
-	const point_btn: Element | null = document.getElementById("point-btn");
 	const restart_btn: Element | null = document.getElementById("restart-btn");
 	const exitBtn: Element | null = document.getElementById("exit-btn");
 
-	if (!point_btn || !restart_btn || !exitBtn)
+	if (!restart_btn || !exitBtn)
 		return;
-
-	point_btn.addEventListener("click", function showPoints() {
-		alert_modal("Points", `You Have ${players_points} Pts`, "Ok");
-	});
 
 	restart_btn.addEventListener("click", function restart() {
 		alert_modal("You have restarted", `You Had ${players_points} Pts`, "Ok");
@@ -215,7 +218,7 @@ function getGameControls() {
 	});
 
 	exitBtn.addEventListener("click", function exit() {
-		alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok");
+		alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok", true);
 		window.localStorage.clear();
 	});
 }

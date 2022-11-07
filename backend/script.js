@@ -151,7 +151,7 @@ const word_api = {
 let players_points = localStorage.getItem("players_points") || 0;
 const place_of_word = document.querySelector(".word");
 const answer_btn = document.querySelector(".answer-btn");
-function alert_modal(heading = "", message = "", btn_text = "Ok") {
+function alert_modal(heading = "", message = "", btn_text = "Ok", exit_status = false) {
     const body = document.getElementsByTagName("body")[0];
     const alert_modal_struc = `	
 		<section id="alert-modal">
@@ -162,13 +162,13 @@ function alert_modal(heading = "", message = "", btn_text = "Ok") {
     body.innerHTML = alert_modal_struc;
     const alert_modal_styling = document.getElementById("alert-modal");
     const alert_modal_btn = document.getElementById(`${btn_text}-btn`);
-    if (!alert_modal_styling)
+    if (!alert_modal_styling || !alert_modal_btn)
         return;
     let alert_modal_styles = {
         display: "flex",
         position: "absolute",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "",
         justifyContent: "space-evenly",
         backgroundColor: "white",
         borderRadius: "5px",
@@ -182,28 +182,31 @@ function alert_modal(heading = "", message = "", btn_text = "Ok") {
         for (const key in alert_modal_styles) {
             if (value === key) {
                 styles[value] = alert_modal_styles[key];
+                alert_modal_btn.style.alignSelf = "flex-end";
+                alert_modal_btn.style.width = "30%";
             }
         }
     }
-    alert_modal_btn === null || alert_modal_btn === void 0 ? void 0 : alert_modal_btn.addEventListener('click', () => {
-        window.location.reload();
+    alert_modal_btn.addEventListener('click', () => {
+        if (exit_status) {
+            window.close();
+        }
+        if (!exit_status) {
+            window.location.reload();
+        }
     });
 }
 function getGameControls() {
-    const point_btn = document.getElementById("point-btn");
     const restart_btn = document.getElementById("restart-btn");
     const exitBtn = document.getElementById("exit-btn");
-    if (!point_btn || !restart_btn || !exitBtn)
+    if (!restart_btn || !exitBtn)
         return;
-    point_btn.addEventListener("click", function showPoints() {
-        alert_modal("Points", `You Have ${players_points} Pts`, "Ok");
-    });
     restart_btn.addEventListener("click", function restart() {
         alert_modal("You have restarted", `You Had ${players_points} Pts`, "Ok");
         window.localStorage.clear();
     });
     exitBtn.addEventListener("click", function exit() {
-        alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok");
+        alert_modal("You have exited", `You Had ${players_points} Pts`, "Ok", true);
         window.localStorage.clear();
     });
 }
